@@ -3,6 +3,12 @@ import ICar from '../Interfaces/ICar';
 import CarODM from '../Models/CarODM';
 
 class CarService {
+  private model: CarODM;
+
+  constructor() {
+    this.model = new CarODM();
+  }
+
   private createCarDomain(car: ICar | null): Car | null {
     if (car) {
       return new Car(car);
@@ -11,8 +17,7 @@ class CarService {
   }
   
   public async register(data: ICar) {
-    const carODM = new CarODM();
-    const newCar = await carODM.create(data);
+    const newCar = await this.model.create(data);
     return this.createCarDomain(newCar);
   }
 }
