@@ -37,14 +37,14 @@ describe('Should return the car by id', function () {
   });
 
   it('should return error when id does not exist', async function () {
-    const notExistId = '6348513f34c3XXXXXXXXXXXX';  
+    const notExistId = '6348513f34c397abcad00000';  
     sinon.stub(Model, 'findById').resolves(null);
 
     const service = new CarService();
     try {
       await service.getByIdCar(notExistId);
     } catch (error) {
-      expect((error as Error).message).to.be.equal('Invalid mongo id');
+      expect((error as Error).message).to.be.equal('Car not found');
     }
   });
 
