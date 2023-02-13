@@ -1,7 +1,6 @@
-import { Schema, isValidObjectId } from 'mongoose';
+import { Schema } from 'mongoose';
 import AbstractODM from './AbstractODM';
 import ICar from '../Interfaces/ICar';
-import CustomError from '../utils/CustomError';
 
 class CarODM extends AbstractODM<ICar> {
   constructor() {
@@ -15,19 +14,6 @@ class CarODM extends AbstractODM<ICar> {
       seatsQty: { type: Number, required: true },
     });
     super(schema, 'Car');
-  }
-
-  public async create(car: ICar): Promise<ICar> {
-    return this.model.create({ ...car });
-  }
-
-  public async find(): Promise<ICar[]> {
-    return this.model.find();
-  }
-
-  public async findById(id: string): Promise<ICar | null> {
-    if (!isValidObjectId(id)) throw new CustomError(422, 'Invalid mongo id');
-    return this.model.findById(id);
   }
 }
 
