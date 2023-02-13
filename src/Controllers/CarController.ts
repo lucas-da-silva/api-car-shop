@@ -29,6 +29,21 @@ class CarController {
     const newCar = await this.service.register(car);
     return this.res.status(201).json(newCar);
   }
+
+  public async getAllCars() {
+    const cars = await this.service.getAllCars();
+    return this.res.status(200).json(cars);
+  }
+
+  public async getByIdCar() {
+    const { id } = this.req.params;
+    try {
+      const car = await this.service.getByIdCar(id);
+      return this.res.status(200).json(car);
+    } catch (error) {
+      return this.next(error);
+    }
+  }
 }
 
 export default CarController;
