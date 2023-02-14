@@ -41,6 +41,13 @@ class CarService {
     }
     return this.createCarDomain(updatedCar);
   }
+
+  public async deleteCar(id: string) {
+    const deletedCar = await this.carODM.delete(id);
+    if (!deletedCar) {
+      throw new CustomError(HttpStatus.NOT_FOUND, MessageError.CAR_NOT_FOUND); 
+    }
+  }
 }
 
 export default CarService;
