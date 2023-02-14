@@ -41,6 +41,11 @@ abstract class AbstractODM<T> {
     });
   }
 
+  public async delete(_id: string): Promise<T | null> {
+    this.isValidId(_id);
+    return this.model.findByIdAndDelete({ _id });
+  }
+
   private isValidId(id: string): void {
     if (!isValidObjectId(id)) {
       throw new CustomError(
