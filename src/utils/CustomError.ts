@@ -1,7 +1,10 @@
+import MessageError from './MessageError';
+import HttpStatus from './HttpStatus';
+
 class CustomError extends Error {
-  private _status: number;
+  private _status: HttpStatus;
   
-  constructor(status: number, message: string) {
+  constructor(status: HttpStatus, message: MessageError) {
     super(message);
     this._status = status;
   }

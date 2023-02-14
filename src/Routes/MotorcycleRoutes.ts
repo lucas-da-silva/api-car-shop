@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import MotorcycleService from '../Controllers/MotorcycleService';
+import MotorcycleController from '../Controllers/MotorcycleController';
 
 const routes = Router();
 
 routes.post(
   '/',
-  (req, res, next) => new MotorcycleService(req, res, next).create(),
+  (req, res, next) => new MotorcycleController(req, res, next).create(),
 );
 
 export default routes;

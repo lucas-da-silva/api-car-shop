@@ -1,5 +1,14 @@
-import { isValidObjectId, model, Model, models, Schema, UpdateQuery } from 'mongoose';
+import {
+  isValidObjectId,
+  model,
+  Model,
+  models,
+  Schema,
+  UpdateQuery,
+} from 'mongoose';
 import CustomError from '../utils/CustomError';
+import MessageError from '../utils/MessageError';
+import HttpStatus from '../utils/HttpStatus';
 
 abstract class AbstractODM<T> {
   protected model: Model<T>;
@@ -21,17 +30,25 @@ abstract class AbstractODM<T> {
   }
 
   public async findById(id: string): Promise<T | null> {
-    if (!isValidObjectId(id)) throw new CustomError(422, 'Invalid mongo id');
+    if (!isValidObjectId(id)) {
+      throw new CustomError(
+        HttpStatus.UNPROCESSABLE_ENTITY,
+        MessageError.INVALID_MONGO_ID,
+      );
+    }
     return this.model.findById(id);
   }
 
   public async update(_id: string, obj: Partial<T>): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new CustomError(422, 'Invalid mongo id');
-    return this.model.findByIdAndUpdate(
-      { _id },
-      { ...obj } as UpdateQuery<T>,  
-      { new: true },
-    );
+    if (!isValidObjectId(_id)) {
+      throw new CustomError(
+        HttpStatus.UNPROCESSABLE_ENTITY,
+        MessageError.INVALID_MONGO_ID,
+      );
+    }
+    return this.model.findByIdAndUpdate({ _id }, { ...obj } as UpdateQuery<T>, {
+      new: true,
+    });
   }
 }
 
