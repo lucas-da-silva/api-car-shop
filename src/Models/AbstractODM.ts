@@ -30,25 +30,24 @@ abstract class AbstractODM<T> {
   }
 
   public async findById(id: string): Promise<T | null> {
+    this.isValidId(id);
+    return this.model.findById(id);
+  }
+
+  public async update(_id: string, obj: Partial<T>): Promise<T | null> {
+    this.isValidId(_id);
+    return this.model.findByIdAndUpdate({ _id }, { ...obj } as UpdateQuery<T>, {
+      new: true,
+    });
+  }
+
+  private isValidId(id: string): void {
     if (!isValidObjectId(id)) {
       throw new CustomError(
         HttpStatus.UNPROCESSABLE_ENTITY,
         MessageError.INVALID_MONGO_ID,
       );
     }
-    return this.model.findById(id);
-  }
-
-  public async update(_id: string, obj: Partial<T>): Promise<T | null> {
-    if (!isValidObjectId(_id)) {
-      throw new CustomError(
-        HttpStatus.UNPROCESSABLE_ENTITY,
-        MessageError.INVALID_MONGO_ID,
-      );
-    }
-    return this.model.findByIdAndUpdate({ _id }, { ...obj } as UpdateQuery<T>, {
-      new: true,
-    });
   }
 }
 
