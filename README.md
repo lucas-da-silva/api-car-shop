@@ -189,10 +189,7 @@ Request **body** parameters:
 
 ## Stack used
 
-**Database:** 
-    ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+**Database:** [MongoDB](https://www.mongodb.com/)
 
-**Back-end:** 
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white) ![Chai](https://img.shields.io/badge/chai-A30701?style=for-the-badge&logo=chai&logoColor=white) 
-- Mongoose and Sinon
+**Back-end:** [TypeScript](https://www.typescriptlang.org/), [Express](https://expressjs.com/), [Mongoose](https://mongoosejs.com/), [Jest](https://jestjs.io/), [Chai](https://www.chaijs.com/), [Sinon](https://sinonjs.org/)
 
