@@ -14,7 +14,7 @@ class CarService {
     return new Car(car);
   }
 
-  public async register(data: ICar) {
+  public async registerCar(data: ICar) {
     const newCar = await this.carODM.create(data);
     return this.createCarDomain(newCar);
   }
@@ -30,7 +30,7 @@ class CarService {
     return this.createCarDomain(car);
   }
 
-  public async update(id: string, car: ICar) {
+  public async updateCar(id: string, car: ICar) {
     const updatedCar = await this.carODM.update(id, car);
     if (!updatedCar) throw new CustomError(404, 'Car not found');
     return this.createCarDomain(updatedCar);
