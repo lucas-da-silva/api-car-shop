@@ -33,6 +33,21 @@ class MotorcycleController {
     const newMotorcycle = await this.service.registerMotorcycle(motorcycle);
     return this.res.status(HttpStatus.CREATED).json(newMotorcycle);
   }
+
+  public async getAllMotorcycles() {
+    const motorcycles = await this.service.getAllMotorcycles();
+    return this.res.status(HttpStatus.OK).json(motorcycles);
+  }
+
+  public async getByIdMotorcycle() {
+    const { id } = this.req.params;
+    try {
+      const motorcycles = await this.service.getByIdMotorcycle(id);
+      return this.res.status(HttpStatus.OK).json(motorcycles);
+    } catch (error) {
+      return this.next(error);
+    }
+  }
 }
 
 export default MotorcycleController;

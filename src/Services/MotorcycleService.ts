@@ -4,7 +4,6 @@ import MotorcycleODM from '../Models/MotorcycleODM';
 import CustomError from '../utils/CustomError';
 import HttpStatus from '../utils/HttpStatus';
 import MessageError from '../utils/MessageError';
-// import CustomError from '../utils/CustomError';
 
 class MotorcycleService {
   private motorcycleODM: MotorcycleODM;
@@ -17,12 +16,12 @@ class MotorcycleService {
     return new Motorcycle(motorcycle);
   }
 
-  public async registerMotorcycles(data: IMotorcycle) {
+  public async registerMotorcycle(data: IMotorcycle) {
     const newMotorcycle = await this.motorcycleODM.create(data);
     return this.createMotorcycleDomain(newMotorcycle);
   }
 
-  public async getAllMotorcycle() {
+  public async getAllMotorcycles() {
     const motorcycles = await this.motorcycleODM.find();
     return motorcycles.map((motorcycle) => this.createMotorcycleDomain(motorcycle));
   }
