@@ -23,5 +23,7 @@ describe('Should create a car', function () {
     const resolves = await service.registerCar(carInput);
     
     expect(resolves).to.be.deep.equal(carOutput);
+
+    sinon.restore();
   });
 });
