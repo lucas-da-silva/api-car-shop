@@ -29,7 +29,7 @@ class MotorcycleService {
   public async getByIdMotorcycle(id: string) {
     const motorcycle = await this.motorcycleODM.findById(id);
     if (!motorcycle) { 
-      throw new CustomError(HttpStatus.NOT_FOUND, MessageError.CAR_NOT_FOUND);
+      throw new CustomError(HttpStatus.NOT_FOUND, MessageError.MOTORCYCLE_NOT_FOUND);
     }
     return this.createMotorcycleDomain(motorcycle);
   }
