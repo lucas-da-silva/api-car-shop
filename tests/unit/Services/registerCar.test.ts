@@ -20,7 +20,7 @@ describe('Should create a car', function () {
     sinon.stub(Model, 'create').resolves(carOutput);
 
     const service = new CarService();
-    const resolves = await service.register(carInput);
+    const resolves = await service.registerCar(carInput);
     
     expect(resolves).to.be.deep.equal(carOutput);
   });
