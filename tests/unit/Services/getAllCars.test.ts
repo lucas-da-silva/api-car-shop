@@ -24,5 +24,7 @@ describe('Should return all cars', function () {
     const resolves = await service.getAllCars();
 
     expect(resolves).to.be.deep.equal(carOutput);
+    
+    sinon.restore();
   });
 });
