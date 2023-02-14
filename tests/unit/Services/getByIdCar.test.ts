@@ -26,7 +26,7 @@ describe('Should return the car by id', function () {
     expect(resolves).to.be.deep.equal(carOutput);
   });
 
-  it('should return error when id is invalid', async function () {
+  it('should give ERROR when id is invalid', async function () {
     const invalidId = 'invalid';  
 
     const service = new CarService();
@@ -37,7 +37,7 @@ describe('Should return the car by id', function () {
     }
   });
 
-  it('should return error when id does not exist', async function () {
+  it('should give ERROR when id does not exist', async function () {
     const notExistId = '6348513f34c397abcad00000';  
     sinon.stub(Model, 'findById').resolves(null);
 
