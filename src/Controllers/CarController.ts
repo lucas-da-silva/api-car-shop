@@ -15,17 +15,20 @@ class CarController {
     this.service = new CarService();
   }
 
-  public async create() {
-    const car: ICar = {
-      model: this.req.body.model,
-      year: this.req.body.year,
-      color: this.req.body.color,
-      status: this.req.body.status,
-      buyValue: this.req.body.buyValue,
-      doorsQty: this.req.body.doorsQty,
-      seatsQty: this.req.body.seatsQty,
+  private createICar(req: Request): ICar {
+    return {
+      model: req.body.model,
+      year: req.body.year,
+      color: req.body.color,
+      status: req.body.status,
+      buyValue: req.body.buyValue,
+      doorsQty: req.body.doorsQty,
+      seatsQty: req.body.seatsQty,
     };
+  }
 
+  public async create() {
+    const car: ICar = this.createICar(this.req);
     const newCar = await this.service.register(car);
     return this.res.status(201).json(newCar);
   }
@@ -40,6 +43,17 @@ class CarController {
     try {
       const car = await this.service.getByIdCar(id);
       return this.res.status(200).json(car);
+    } catch (error) {
+      return this.next(error);
+    }
+  }
+
+  public async update() {
+    const { id } = this.req.params;
+    const car: ICar = this.createICar(this.req);
+    try {
+      const updatedCar = await this.service.update(id, car);
+      return this.res.status(200).json(updatedCar);
     } catch (error) {
       return this.next(error);
     }
