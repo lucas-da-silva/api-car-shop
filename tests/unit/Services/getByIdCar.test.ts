@@ -3,6 +3,7 @@ import sinon from 'sinon';
 import { expect } from 'chai';
 import Car from '../../../src/Domains/Car';
 import CarService from '../../../src/Services/CarService';
+import MessageError from '../../../src/utils/MessageError';
 
 describe('Should return the car by id', function () {
   it('should SUCCESSFULLY return the car by id', async function () {
@@ -32,7 +33,7 @@ describe('Should return the car by id', function () {
     try {
       await service.getByIdCar(invalidId);
     } catch (error) {
-      expect((error as Error).message).to.be.equal('Invalid mongo id');
+      expect((error as Error).message).to.be.equal(MessageError.INVALID_MONGO_ID);
     }
   });
 
@@ -44,7 +45,7 @@ describe('Should return the car by id', function () {
     try {
       await service.getByIdCar(notExistId);
     } catch (error) {
-      expect((error as Error).message).to.be.equal('Car not found');
+      expect((error as Error).message).to.be.equal(MessageError.CAR_NOT_FOUND);
     }
   });
 

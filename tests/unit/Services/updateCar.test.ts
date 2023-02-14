@@ -4,6 +4,7 @@ import { expect } from 'chai';
 import Car from '../../../src/Domains/Car';
 import CarService from '../../../src/Services/CarService';
 import ICar from '../../../src/Interfaces/ICar';
+import MessageError from '../../../src/utils/MessageError';
 
 describe('Should update a car', function () {
   it('should SUCCESSFULLY update a car', async function () {
@@ -42,7 +43,7 @@ describe('Should update a car', function () {
       const service = new CarService();
       await service.updateCar(invalidId, carInput);
     } catch (error) {
-      expect((error as Error).message).to.be.deep.equal('Invalid mongo id');
+      expect((error as Error).message).to.be.deep.equal(MessageError.INVALID_MONGO_ID);
     }
   });
 
