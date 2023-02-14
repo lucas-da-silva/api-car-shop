@@ -14,7 +14,7 @@ class MotorcycleService {
     return new Motorcycle(car);
   }
 
-  public async register(data: IMotorcycle) {
+  public async registerMotorcycle(data: IMotorcycle) {
     const newMotorcycle = await this.motorcycleODM.create(data);
     return this.createMotorcycleDomain(newMotorcycle);
   }

@@ -5,7 +5,7 @@ const routes = Router();
 
 routes.post(
   '/',
-  (req, res, next) => new MotorcycleController(req, res, next).create(),
+  (req, res, next) => new MotorcycleController(req, res, next).createMotorcycle(),
 );
 
 export default routes;

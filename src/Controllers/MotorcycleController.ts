@@ -28,9 +28,9 @@ class MotorcycleController {
     };
   }
 
-  public async create() {
+  public async createMotorcycle() {
     const motorcycle: IMotorcycle = this.createIMotorcycle(this.req);
-    const newMotorcycle = await this.service.register(motorcycle);
+    const newMotorcycle = await this.service.registerMotorcycle(motorcycle);
     return this.res.status(HttpStatus.CREATED).json(newMotorcycle);
   }
 }
