@@ -33,6 +33,14 @@ class MotorcycleService {
     }
     return this.createMotorcycleDomain(motorcycle);
   }
+
+  public async updateMotorcycle(id: string, motorcycle: IMotorcycle) {
+    const updatedMotorcycle = await this.motorcycleODM.update(id, motorcycle);
+    if (!updatedMotorcycle) { 
+      throw new CustomError(HttpStatus.NOT_FOUND, MessageError.MOTORCYCLE_NOT_FOUND);
+    }
+    return this.createMotorcycleDomain(updatedMotorcycle);
+  }
 }
 
 export default MotorcycleService;
