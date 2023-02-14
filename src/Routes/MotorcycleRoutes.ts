@@ -23,4 +23,9 @@ routes.put(
   (req, res, next) => new MotorcycleController(req, res, next).updateMotorcycle(),
 );
 
+routes.delete(
+  '/:id',
+  (req, res, next) => new MotorcycleController(req, res, next).deleteMotorcycle(),
+);
+
 export default routes;

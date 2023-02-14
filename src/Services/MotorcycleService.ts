@@ -41,6 +41,13 @@ class MotorcycleService {
     }
     return this.createMotorcycleDomain(updatedMotorcycle);
   }
+
+  public async deleteMotorcycle(id: string) {
+    const deletedMotorcycle = await this.motorcycleODM.delete(id);
+    if (!deletedMotorcycle) {
+      throw new CustomError(HttpStatus.NOT_FOUND, MessageError.MOTORCYCLE_NOT_FOUND); 
+    }
+  }
 }
 
 export default MotorcycleService;

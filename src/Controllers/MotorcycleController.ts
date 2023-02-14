@@ -59,6 +59,16 @@ class MotorcycleController {
       return this.next(error);
     }
   }
+
+  public async deleteMotorcycle() {
+    const { id } = this.req.params;
+    try {
+      await this.service.deleteMotorcycle(id);
+      return this.res.status(HttpStatus.NO_CONTENT).end();
+    } catch (error) {
+      return this.next(error);
+    }
+  }
 }
 
 export default MotorcycleController;
