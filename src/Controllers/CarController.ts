@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import ICar from '../Interfaces/ICar';
 import CarService from '../Services/CarService';
+import HttpStatus from '../utils/HttpStatus';
 
 class CarController {
   private req: Request;
@@ -30,19 +31,19 @@ class CarController {
   public async createCar() {
     const car: ICar = this.createICar(this.req);
     const newCar = await this.service.registerCar(car);
-    return this.res.status(201).json(newCar);
+    return this.res.status(HttpStatus.CREATED).json(newCar);
   }
 
   public async getAllCars() {
     const cars = await this.service.getAllCars();
-    return this.res.status(200).json(cars);
+    return this.res.status(HttpStatus.OK).json(cars);
   }
 
   public async getByIdCar() {
     const { id } = this.req.params;
     try {
       const car = await this.service.getByIdCar(id);
-      return this.res.status(200).json(car);
+      return this.res.status(HttpStatus.OK).json(car);
     } catch (error) {
       return this.next(error);
     }
@@ -53,7 +54,7 @@ class CarController {
     const car: ICar = this.createICar(this.req);
     try {
       const updatedCar = await this.service.updateCar(id, car);
-      return this.res.status(200).json(updatedCar);
+      return this.res.status(HttpStatus.OK).json(updatedCar);
     } catch (error) {
       return this.next(error);
     }

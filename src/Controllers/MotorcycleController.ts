@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import IMotorcycle from '../Interfaces/IMotorcycle';
 import MotorcycleService from '../Services/MotorcycleService';
+import HttpStatus from '../utils/HttpStatus';
 
 class MotorcycleController {
   private req: Request;
@@ -30,7 +31,7 @@ class MotorcycleController {
   public async create() {
     const motorcycle: IMotorcycle = this.createIMotorcycle(this.req);
     const newMotorcycle = await this.service.register(motorcycle);
-    return this.res.status(201).json(newMotorcycle);
+    return this.res.status(HttpStatus.CREATED).json(newMotorcycle);
   }
 }
 
