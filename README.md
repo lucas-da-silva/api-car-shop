@@ -1,6 +1,6 @@
 # Project Car Shop
 
-Api was developed using TypeScript following the principles of Programming Oriented Object (POO), Behavior Driven Development (BDD) and using ODM Mongoose to perform the CRUD of a vehicle carrier.
+API was developed using TypeScript following the principles of Programming Oriented Object (POO), Behavior Driven Development (BDD) and using ODM Mongoose to perform the CRUD of a vehicle carrier.
 
 Unit tests were also developed for all layers and integration tests to validate the operation of the API.
 ## Running locally
@@ -20,14 +20,14 @@ Enter the project directory
 Upload containers ([docker-compose](https://docs.docker.com/compose/install/) is required)
 
 ```bash
-docker-compose up -d
+  docker-compose up -d
 ```
 
 Enter the `car_shop` container
 
 
 ```bash
-docker exec -it car_shop bash
+  docker exec -it car_shop bash
 ```
 
 Install the dependencies
