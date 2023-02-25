@@ -8,7 +8,7 @@ Unit tests were also developed for all layers and integration tests to validate 
 Clone the project
 
 ```bash
-  git clone git@github.com:lucas-da-silva/project-car-shop.git
+  git clone git@github.com:lucas-da-silva/car-shop.git
 ```
 
 Enter the project directory
